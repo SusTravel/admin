@@ -47,7 +47,7 @@ class Place
     private $imageId;
 
     /**
-     * @ORM\Column(type="blob", name="location")
+     * @ORM\Column(type="linestring", name="location")
      *
      * @var string
      */
