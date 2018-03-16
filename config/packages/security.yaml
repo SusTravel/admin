@@ -5,14 +5,19 @@ security:
           memory:
             users:
               admin:
-                password: 'pavel'
+                password: '$2a$12$MwQt8z.vfzRK5M9yupVwXuA6hRhOXejf4wrHeOy07201qMCuITKeG'
                 roles: 'ROLE_ADMIN'
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+          algorithm: bcrypt
+          cost: 12
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: ~
+            http_basic: ~
         admin:
             pattern: '/admin'
             provider: in_memory
