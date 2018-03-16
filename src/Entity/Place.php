@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use CrEOF\Spatial\PHP\Types\Geography\Point;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,9 +48,9 @@ class Place
     private $imageId;
 
     /**
-     * @ORM\Column(type="blob", name="location")
+     * @ORM\Column(type="point", name="location")
      *
-     * @var string
+     * @var Point
      */
     private $location;
 
@@ -155,7 +156,7 @@ class Place
     }
 
     /**
-     * @return mixed
+     * @return Point
      */
     public function getLocation()
     {
@@ -163,12 +164,19 @@ class Place
     }
 
     /**
-     * @param mixed $location
+     * @param Point $location
      */
     public function setLocation($location)
     {
-        $this->location = $location;
+        list($lat, $lon) = explode(' ', $location);
+
+        $point = new Point([$lat, $lon]);
+        $point->setLatitude($lon);
+        $point->setLongitude($lat);
+
+        $this->location = $point;
     }
+
 
     /**
      * @return string
