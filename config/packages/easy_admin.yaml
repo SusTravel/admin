@@ -1,5 +1,12 @@
 easy_admin:
     site_name: 'SustTravel'
+    design:
+      menu:
+        - { entity: 'Place' }
+        - { entity: 'Continent' }
+        - { entity: 'Region' }
+        - { label: 'Monitoring', url: 'http://ec2-18-197-56-231.eu-central-1.compute.amazonaws.com:8080/sustrav/monitoring', rel: 'index', target: '_blank' }
+
     entities:
         - App\Entity\Place
         - App\Entity\Continent
